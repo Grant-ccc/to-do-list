@@ -1,0 +1,220 @@
+body {
+    padding-top: 100px;
+    background-image: url(1.webp);
+    backdrop-filter: blur(5px);
+    /* 确保 body 占满整个视口 */
+    min-height: 100vh;
+    margin: 0;
+}
+
+.all {
+    height: 80%;
+    width: 50%;
+    padding: 0%;
+    margin: 0 auto;
+    background-color: rgb(243, 244, 229);
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: inset;
+    justify-content: center;
+    /* 主轴（默认是水平方向）居中 */
+    align-items: center;
+}
+
+.title {
+    font-size: 60px;
+    /* padding-top: 100px; */
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 2px black;
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+}
+
+.title svg {
+    color: white;
+    /* 通过改变 color 属性来改变 SVG 的填充色（如果 fill 设置为 currentColor） */
+    width: 60px;
+    height: 60px;
+}
+
+.input_area {
+    align-items: center;
+    height: 20%;
+    width: 80%;
+    display: flex;
+    position: relative;
+    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 500px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.new_thing {
+    font-size: 18px;
+    height: 60px;
+    width: 400px;
+    padding: 0 30px;
+    border: 0;
+    border-radius: 30px 0 0 30px;
+    /* 左侧圆角 */
+    outline: none;
+    background-color: lightgray;
+}
+
+.add_button {
+    height: 60px;
+    width: 100px;
+    background-color: rgb(86, 136, 36);
+    color: white;
+    border-radius: 0 30px 30px 0;
+    border: 0;
+    text-size-adjust: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.show_area {
+    height: 80%;
+    width: 50%;
+    display: flex;
+    position: relative;
+    padding: 20px 30px 20px 30px;
+    margin: 0 auto;
+    max-width: 500px;
+    margin-bottom: 20px;
+    background-color: rgb(243, 244, 229);
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: inset;
+}
+
+.todolist {
+    list-style: none;
+    padding: 0;
+    /* 移除 ul 默认的左侧内边距，确保 li 占满 show_area */
+    margin: 0;
+    /* 移除 ul 默认的上下外边距 */
+    width: 100%;
+    /* 确保 ul 占满 show_area 的全部可用宽度 */
+}
+
+.wait {
+    width: 20px;
+    height: 20px;
+    border: 3px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.finish {
+    width: 20px;
+    height: 20px;
+    border: 3px solid grey;
+    border-radius: 5px;
+    background-color: rgb(78, 183, 78);
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    /* list-style 是 list-style-type, list-style-position, list-style-image 的简写 */
+    padding-left: 0;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    /* 让 li 成为 Flex 容器，方便对齐内容和图标 */
+    display: flex;
+    align-items: center;
+    /* 垂直居中对齐 */
+    justify-content: space-between;
+    /* 关键：让子元素（文本和SVG）两端对齐 */
+    width: 100%;
+
+    /* 增加一个底边框或背景，让它看起来像一个待办项 */
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
+li svg {
+    border-color: rgb(105, 104, 104);
+    /* 通过改变 color 属性来改变 SVG 的填充色（如果 fill 设置为 currentColor） */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* 状态切换的css */
+/* 默认：隐藏finish，显示wait */
+.todo-item .finish{
+    display: none;
+}
+.todo-item .wait{
+    display: block;
+}
+
+/* 当li拥有completed class时，隐藏wait显示finish */
+.todo-item.completed .wait{
+    display: none;
+}
+
+.todo-item.completed .finish{
+    display: block;
+}
+
+/* 完成的删除线 */
+.todo-item.completed .task_text{
+    text-decoration: line-through;
+    color: #999;
+}
+
+
+@media (max-width: 600px) {
+
+    /* 1. 调整标题大小和上边距 */
+    .title {
+        font-size: 36px;
+        /* 缩小标题 */
+        margin-top: 20px;
+        /* 缩小顶部距离 */
+    }
+
+    .title svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* 2. 调整主要内容区域宽度 */
+    .input_area,
+    .show_area {
+        /* 让内容区域几乎占满屏幕宽度，留出 5% 的左右边距 */
+        width: 90%;
+        max-width: 90%;
+        /* 覆盖原有的 max-width 限制 */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* 3. 调整输入框和按钮的圆角，使其在小屏幕上更协调 */
+    .new_thing {
+        font-size: 16px;
+        border-radius: 30px 0 0 30px;
+        /* 保持左侧圆角 */
+        height: 50px;
+        /* 缩小输入框高度 */
+    }
+
+    .add_button {
+        height: 50px;
+        /* 保持和输入框一致的高度 */
+    }
+
+    /* 4. 缩小列表项字体大小 */
+    li {
+        font-size: 16px;
+    }
+}
